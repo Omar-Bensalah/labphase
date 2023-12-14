@@ -1,4 +1,4 @@
-tage 1
+# Stage 1
 
 FROM nginx:alpine
 
