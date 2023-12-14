@@ -2,7 +2,7 @@
 
 FROM nginx:alpine
 
-COPY ./dist/hellomoto /usr/share/nginx/html
+COPY ./dist/labphase /usr/share/nginx/html
 
 EXPOSE 8200
 
