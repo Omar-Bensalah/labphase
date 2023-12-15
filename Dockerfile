@@ -1,9 +1,22 @@
 # Stage 1
 
-FROM nginx:alpine
+FROM node:16-alpine as build
 
-COPY ./dist/labphase /usr/share/nginx/html
+RUN mkdir -p /app
 
-EXPOSE 8200
+WORKDIR /app
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY package.json /app
+
+RUN npm install
+
+COPY . /app
+
+RUN npm run build --prod
+
+
+# Stage 2
+
+FROM nginx:1.17.1-alpine as service
+
+COPY --from=build /app/dist/labphase /usr/share/nginx/html
