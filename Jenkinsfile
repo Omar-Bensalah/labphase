@@ -13,7 +13,7 @@ pipeline{
 
        stage('Cleaning the project') {
             steps{
-                	sh 'mvn -B -hellomoto clean'
+                	sh 'mvn -B -labphase clean'
             }
         }
 
@@ -33,7 +33,7 @@ pipeline{
 
         stage('Artifact Construction') {
             steps{
-                	sh "mvn -B -hellomoto package "
+                	sh "mvn -B -labphase package "
             }
         }
 
