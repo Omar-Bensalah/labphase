@@ -43,7 +43,21 @@ pipeline{
       	sh 'docker build -t omarbensalah8/labphasetest .'
       }
     }
+       stage('Docker login') {
+        agent any
+         steps {
+          withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+        	sh 'docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}'
+          }
+       }
+     }
 
+      stage ('Docker push to hub') {
+        agent any
+        steps {
+          sh 'docker push omarbensalah8/labphasetest:latest'
+        }
+      }
 }
 	    
         post {
@@ -51,7 +65,7 @@ pipeline{
             // Define post-build actions, if needed
             // For example, you can archive the build artifacts
             //archiveArtifacts(allowEmptyArchive: true, artifacts: 'dist/**')
-            cleanWS()
+            //cleanWS()
         }
     }	
 }
