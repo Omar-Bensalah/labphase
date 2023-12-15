@@ -11,31 +11,31 @@ pipeline{
             }
         }
 
-       stage('Cleaning the project') {
-            steps{
-                	sh 'mvn -B -labphase clean'
-            }
-        }
+       //stage('Cleaning the project') {
+         //   steps{
+           //     	sh 'mvn -B -labphase clean'
+            //}
+        //}
 
-		stage('Install Dependencies') {
-            steps {
+		//stage('Install Dependencies') {
+            //steps {
                 // Use Node.js and npm installed on the Jenkins agent
-                sh 'npm install'
-            }
-        }
+              //  sh 'npm install'
+           // }
+       // }
 		
-	stage('Build Angular App') {
-            steps {
+	//stage('Build Angular App') {
+          //  steps {
                 // Build the Angular app
-                sh 'npm run build --prod'
-            }
-        }
+            //    sh 'npm run build --prod'
+            //}
+        //}
 
-        stage('Artifact Construction') {
-            steps{
-                	sh "mvn -B -labphase package "
-            }
-        }
+        //stage('Artifact Construction') {
+          //  steps{
+            //    	sh "mvn -B -labphase package "
+            //}
+        //}
 
        stage('Docker Build') {
     	agent any
