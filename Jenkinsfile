@@ -64,7 +64,7 @@ pipeline{
         success {
             // Define post-build actions, if needed
             // For example, you can archive the build artifacts
-            //archiveArtifacts(allowEmptyArchive: true, artifacts: 'dist/**')
+            archiveArtifacts(allowEmptyArchive: true, artifacts: 'dist/**')
             //cleanWS()
         }
     }	
